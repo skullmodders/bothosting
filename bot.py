@@ -581,18 +581,14 @@ def send_forcejoin_message(chat_id, not_joined_channels):
 
         if username:
             url = f"https://t.me/{username.lstrip('@')}"
-            markup.add(types.InlineKeyboardButton(f"🔔 Join: {name}", url=url))
+            markup.add(types.InlineKeyboardButton("🔔 Join: " + str(name), url=url))
 
     markup.add(types.InlineKeyboardButton("✅ I Joined", callback_data='check_joined'))
 
     text = (
-        f"{ce('alarm')} <b>Join Required!</b>
-
-"
-        f"You must join all required channels to use {BOT_NAME}.
-
-"
-        f"{ce('arrow_right')} Click below to join, then press <b>I Joined</b>."
+        ce('alarm') + " <b>Join Required!</b>\n\n"
+        + "You must join all required channels to use " + BOT_NAME + ".\n\n"
+        + ce('arrow_right') + " Click below to join, then press <b>I Joined</b>."
     )
 
     bot.send_message(
@@ -601,6 +597,7 @@ def send_forcejoin_message(chat_id, not_joined_channels):
         reply_markup=markup,
         parse_mode='HTML'
     )
+
 
 
 # ─────────────────────────────────────────────
