@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-# SkullBotHost - Telegram Bot Hosting Service
-# Enhanced: Premium emojis, ForceJoin, Bot Broadcast, Full Admin Panel
+
 
 import telebot
 import subprocess
@@ -572,19 +570,28 @@ def check_user_joined_channels(user_id):
             not_joined.append(ch)
     return not_joined
 
+
 def send_forcejoin_message(chat_id, not_joined_channels):
     markup = types.InlineKeyboardMarkup(row_width=1)
+
     for ch in not_joined_channels:
         username = ch.get('channel_username', '')
         name = ch.get('channel_name', username)
+
         if username:
             url = f"https://t.me/{username.lstrip('@')}"
-            markup.add(types.InlineKeyboardButton(f"{ce('bell')} Join: {name}", url=url))
-    markup.add(types.InlineKeyboardButton(f"{ce('check')} I Joined ✅", callback_data='check_joined'))
+            markup.add(types.InlineKeyboardButton(f"🔔 Join: {name}", url=url))
+
+    markup.add(types.InlineKeyboardButton("✅ I Joined", callback_data='check_joined'))
+
     bot.send_message(
         chat_id,
-        f"{ce('alarm')} <b>Join Required!</b>\n\n"
-        f"You must join all required channels to use {BOT_NAME}.\n\n"
+        f"{ce('alarm')} <b>Join Required!</b>
+
+"
+        f"You must join all required channels to use {BOT_NAME}.
+
+"
         f"{ce('arrow_right')} Click below to join, then press <b>I Joined</b>.",
         reply_markup=markup,
         parse_mode='HTML'
