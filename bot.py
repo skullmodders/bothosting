@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-# SkullBotHost - Telegram Bot Hosting Service
-# Enhanced: Premium emojis, ForceJoin, Bot Broadcast, Full Admin Panel
+
 
 import telebot
 import subprocess
@@ -61,8 +59,8 @@ UPLOAD_BOTS_DIR = os.path.join(BASE_DIR, 'upload_bots')
 IROTECH_DIR = os.path.join(BASE_DIR, 'inf')
 DATABASE_PATH = os.path.join(IROTECH_DIR, 'bot_data.db')
 
-FREE_USER_LIMIT = 10
-SUBSCRIBED_USER_LIMIT = 15
+FREE_USER_LIMIT = 3
+SUBSCRIBED_USER_LIMIT = 20
 ADMIN_LIMIT = 999
 OWNER_LIMIT = float('inf')
 
