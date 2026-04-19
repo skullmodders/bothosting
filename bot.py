@@ -1,4 +1,6 @@
-
+# -*- coding: utf-8 -*-
+# SkullBotHost - Telegram Bot Hosting Service
+# Enhanced: Premium emojis, ForceJoin, Bot Broadcast, Full Admin Panel
 
 import telebot
 import subprocess
@@ -570,7 +572,6 @@ def check_user_joined_channels(user_id):
             not_joined.append(ch)
     return not_joined
 
-
 def send_forcejoin_message(chat_id, not_joined_channels):
     markup = types.InlineKeyboardMarkup(row_width=1)
 
@@ -584,18 +585,23 @@ def send_forcejoin_message(chat_id, not_joined_channels):
 
     markup.add(types.InlineKeyboardButton("✅ I Joined", callback_data='check_joined'))
 
-    bot.send_message(
-        chat_id,
+    text = (
         f"{ce('alarm')} <b>Join Required!</b>
 
 "
         f"You must join all required channels to use {BOT_NAME}.
 
 "
-        f"{ce('arrow_right')} Click below to join, then press <b>I Joined</b>.",
+        f"{ce('arrow_right')} Click below to join, then press <b>I Joined</b>."
+    )
+
+    bot.send_message(
+        chat_id,
+        text,
         reply_markup=markup,
         parse_mode='HTML'
     )
+
 
 # ─────────────────────────────────────────────
 # DATABASE BACKUP & RESTORE
